@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — ReBi AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #09090b;
+  --bg2: #111114;
+  --bg3: #18181c;
+  --surface: #1e1e24;
+  --surface2: #26262e;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --text: #f4f4f5;
+  --text2: #a1a1aa;
+  --text3: #71717a;
+  --accent: #6ee7b7;
+  --accent2: #34d399;
+  --accent-dim: rgba(110,231,183,0.12);
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --r: 8px;
+  --r2: 14px;
+  --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
+}
+[data-theme="light"] {
+  --bg: #fafafa;
+  --bg2: #f4f4f5;
+  --bg3: #e4e4e7;
+  --surface: #ffffff;
+  --surface2: #f4f4f5;
+  --border: rgba(0,0,0,0.07);
+  --border2: rgba(0,0,0,0.12);
+  --text: #09090b;
+  --text2: #52525b;
+  --text3: #a1a1aa;
+  --accent: #059669;
+  --accent2: #047857;
+  --accent-dim: rgba(5,150,105,0.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; overflow-x: hidden; transition: background var(--transition), color var(--transition); }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; background: rgba(9,9,11,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: background var(--transition); }
+[data-theme="light"] nav { background: rgba(250,250,250,0.85); }
+.nav-logo { font-family: var(--font-display); font-size: 22px; font-weight: 800; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.nav-logo-mark { width: 32px; height: 32px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; color: #09090b; }
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+.nav-links a { color: var(--text2); text-decoration: none; font-size: 14px; font-weight: 400; padding: 6px 12px; border-radius: var(--r); transition: color var(--transition), background var(--transition); }
+.nav-links a:hover { color: var(--text); background: var(--surface); }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.btn-theme { background: var(--surface); border: 1px solid var(--border2); color: var(--text2); cursor: pointer; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: all var(--transition); }
+.btn-theme:hover { color: var(--text); border-color: var(--accent); }
+.btn-nav { background: var(--accent); color: #09090b; border: none; padding: 8px 18px; border-radius: var(--r); font-family: var(--font-body); font-size: 14px; font-weight: 500; cursor: pointer; transition: all var(--transition); text-decoration: none; }
+.btn-nav:hover { opacity: 0.88; }
+
+/* LEGAL CONTENT */
+.legal-page { max-width: 760px; margin: 0 auto; padding: 120px 40px 80px; }
+.legal-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.legal-title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 52px); font-weight: 800; letter-spacing: -0.04em; color: var(--text); line-height: 1.1; }
+.legal-meta { font-size: 14px; color: var(--text3); margin-top: 12px; }
+.legal-divider { height: 1px; background: var(--border); margin: 40px 0; }
+.legal-body h2 { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; margin-top: 48px; margin-bottom: 14px; }
+.legal-body h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-top: 28px; margin-bottom: 10px; }
+.legal-body p { font-size: 15px; color: var(--text2); margin-bottom: 16px; line-height: 1.75; }
+.legal-body ul { padding-left: 20px; margin-bottom: 16px; }
+.legal-body ul li { font-size: 15px; color: var(--text2); line-height: 1.75; margin-bottom: 6px; }
+.legal-body a { color: var(--accent); text-decoration: none; }
+.legal-body a:hover { text-decoration: underline; }
+.legal-body strong { color: var(--text); font-weight: 600; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--border); background: var(--bg); padding: 60px 40px 32px; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+.footer-brand p { font-size: 14px; color: var(--text3); margin-top: 16px; max-width: 280px; line-height: 1.6; }
+.footer-col-title { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text2); margin-bottom: 16px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 14px; color: var(--text3); text-decoration: none; transition: color var(--transition); }
+.footer-links a:hover { color: var(--text); }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; }
+.footer-copy { font-size: 13px; color: var(--text3); }
+.social-links { display: flex; gap: 12px; }
+.social-link { width: 34px; height: 34px; border: 1px solid var(--border); border-radius: var(--r); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--text3); text-decoration: none; transition: all var(--transition); }
+.social-link:hover { color: var(--text); border-color: var(--border2); }
+
+.btn-hamburger { display: none; background: var(--surface); border: 1px solid var(--border2); color: var(--text); width: 36px; height: 36px; border-radius: var(--r); align-items: center; justify-content: center; cursor: pointer; font-size: 18px; flex-shrink: 0; transition: all var(--transition); }
+.btn-hamburger:hover { border-color: var(--accent); }
+.mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--bg2); border-bottom: 1px solid var(--border2); z-index: 99; padding: 16px 20px 24px; flex-direction: column; gap: 4px; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { color: var(--text2); text-decoration: none; font-size: 15px; padding: 12px 14px; border-radius: var(--r); transition: color var(--transition), background var(--transition); display: block; }
+.mobile-menu a:hover { color: var(--text); background: var(--surface); }
+.mobile-menu .mobile-menu-cta { background: var(--accent); color: #09090b; font-weight: 500; text-align: center; margin-top: 8px; border-radius: var(--r); }
+.mobile-menu .mobile-menu-cta:hover { opacity: 0.88; }
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .btn-hamburger { display: flex; }
+  .btn-nav-desktop { display: none; }
+  .legal-page { padding: 100px 20px 60px; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
+@media (max-width: 600px) {
+  .legal-page { padding: 88px 16px 48px; }
+  .footer-top { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <span class="nav-logo-mark">R</span>
+    ReBi AI
+  </a>
+  <ul class="nav-links">
+    <li><a href="/#platforms">Platforms</a></li>
+    <li><a href="/#solutions">Solutions</a></li>
+    <li><a href="/#industries">Industries</a></li>
+    <li><a href="/#cases">Case Studies</a></li>
+    <li><a href="/#insights">Insights</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#careers">Careers</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="btn-theme" id="themeToggle" aria-label="Toggle theme">🌙</button>
+    <a href="/#contact" class="btn-nav btn-nav-desktop">Schedule Consultation</a>
+    <button class="btn-hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <a href="/#platforms">Platforms</a>
+  <a href="/#solutions">Solutions</a>
+  <a href="/#industries">Industries</a>
+  <a href="/#cases">Case Studies</a>
+  <a href="/#insights">Insights</a>
+  <a href="/#about">About</a>
+  <a href="/#careers">Careers</a>
+  <a href="/#contact">Contact</a>
+  <a href="/#contact" class="mobile-menu-cta">Schedule Consultation →</a>
+</div>
+
+<div class="legal-page">
+  <div class="legal-eyebrow">Legal</div>
+  <h1 class="legal-title">Privacy Policy</h1>
+  <p class="legal-meta">Last updated: June 2025</p>
+  <div class="legal-divider"></div>
+
+  <div class="legal-body">
+    <p>ReBi AI ("we," "our," or "us") is committed to protecting the privacy of individuals who interact with our website and services. This Privacy Policy explains what data we collect, how we use it, and your rights with respect to that data.</p>
+
+    <h2>1. Information We Collect</h2>
+
+    <h3>Information you provide directly</h3>
+    <p>When you submit a contact form, schedule a consultation, or otherwise reach out to us, we may collect:</p>
+    <ul>
+      <li>Name and job title</li>
+      <li>Work email address</li>
+      <li>Company name and size</li>
+      <li>The nature of your inquiry</li>
+      <li>Any other information you choose to include in your message</li>
+    </ul>
+
+    <h3>Information collected automatically</h3>
+    <p>When you visit our website, we may automatically collect certain technical data including:</p>
+    <ul>
+      <li>IP address and approximate geographic location (country/city)</li>
+      <li>Browser type and version</li>
+      <li>Pages visited and time spent on those pages</li>
+      <li>Referring URL</li>
+      <li>Device type and operating system</li>
+    </ul>
+
+    <h2>2. How We Use Your Information</h2>
+    <p>We use the information we collect to:</p>
+    <ul>
+      <li>Respond to your inquiries and schedule consultations</li>
+      <li>Deliver the services or information you have requested</li>
+      <li>Send relevant communications about ReBi AI's platforms, insights, and events (where you have consented or where we have a legitimate interest)</li>
+      <li>Improve and personalise the website experience</li>
+      <li>Comply with applicable legal obligations</li>
+      <li>Protect against fraud, abuse, and security threats</li>
+    </ul>
+
+    <h2>3. Legal Basis for Processing (GDPR)</h2>
+    <p>For individuals in the European Economic Area (EEA) or United Kingdom, we process personal data on the following legal bases:</p>
+    <ul>
+      <li><strong>Contract performance</strong> — where processing is necessary to deliver a requested service</li>
+      <li><strong>Legitimate interests</strong> — for analytics, security, and direct marketing to business contacts where our interests do not override your rights</li>
+      <li><strong>Consent</strong> — where you have explicitly agreed, such as subscribing to marketing communications</li>
+      <li><strong>Legal obligation</strong> — where processing is required to comply with law</li>
+    </ul>
+
+    <h2>4. Sharing Your Information</h2>
+    <p>We do not sell your personal data. We may share it with:</p>
+    <ul>
+      <li><strong>Service providers</strong> — third-party vendors who help us operate our website and business (e.g., CRM software, email delivery, analytics platforms). These providers are contractually bound to handle data only as instructed by us.</li>
+      <li><strong>Professional advisors</strong> — lawyers, accountants, and insurers where necessary.</li>
+      <li><strong>Regulatory authorities</strong> — where required by law or to protect our legal rights.</li>
+    </ul>
+
+    <h2>5. Cookies</h2>
+    <p>We use cookies and similar tracking technologies on our website. For full details, please see our <a href="/cookie-policy">Cookie Policy</a>.</p>
+
+    <h2>6. Data Retention</h2>
+    <p>We retain personal data for as long as necessary to fulfil the purposes described in this policy, or as required by law. Contact and inquiry data is typically retained for up to 3 years from last interaction. You may request deletion at any time (see Section 8).</p>
+
+    <h2>7. International Data Transfers</h2>
+    <p>ReBi AI operates globally, with offices in North America, Europe, the Middle East, and Asia-Pacific. When personal data is transferred across borders, we apply appropriate safeguards in accordance with applicable data protection law (such as Standard Contractual Clauses for EEA transfers).</p>
+
+    <h2>8. Your Rights</h2>
+    <p>Depending on your jurisdiction, you may have the right to:</p>
+    <ul>
+      <li>Access the personal data we hold about you</li>
+      <li>Correct inaccurate or incomplete data</li>
+      <li>Request deletion of your personal data ("right to erasure")</li>
+      <li>Object to or restrict certain processing activities</li>
+      <li>Receive your data in a portable format (data portability)</li>
+      <li>Withdraw consent at any time where processing is consent-based</li>
+      <li>Lodge a complaint with a supervisory authority (e.g., the ICO in the UK or a relevant EEA Data Protection Authority)</li>
+    </ul>
+    <p>To exercise any of these rights, contact us at <a href="mailto:business@rebiai.tech">business@rebiai.tech</a>. We will respond within 30 days.</p>
+
+    <h2>9. Children's Privacy</h2>
+    <p>Our website and services are directed at business professionals and are not intended for individuals under 16. We do not knowingly collect personal data from minors.</p>
+
+    <h2>10. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy periodically. The "Last updated" date at the top of this page will reflect any changes. Continued use of our website after changes are posted constitutes acceptance of the updated policy.</p>
+
+    <h2>11. Contact Us</h2>
+    <p>For privacy-related questions or requests, please contact:</p>
+    <p><strong>ReBi AI — Privacy Team</strong><br>
+    Email: <a href="mailto:business@rebiai.tech">business@rebiai.tech</a></p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo" style="font-size: 20px;">
+          <span class="nav-logo-mark" style="width: 28px; height: 28px; font-size: 12px;">R</span>
+          ReBi AI
+        </a>
+        <p>Reimagining Business Intelligence through AI. Enterprise-grade AI transformation for the organizations shaping the next decade.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Solutions</div>
+        <ul class="footer-links">
+          <li><a href="/#solutions">Agentic AI</a></li>
+          <li><a href="/#solutions">Generative AI</a></li>
+          <li><a href="/#solutions">AI Consulting</a></li>
+          <li><a href="/#solutions">Data Engineering</a></li>
+          <li><a href="/#solutions">Cloud Transformation</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Platforms</div>
+        <ul class="footer-links">
+          <li><a href="/#platforms">Agent Studio</a></li>
+          <li><a href="/#platforms">Insight Hub</a></li>
+          <li><a href="/#platforms">Data Fabric</a></li>
+          <li><a href="/#platforms">Automation Cloud</a></li>
+          <li><a href="/#platforms">AI Gateway</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#insights">Insights</a></li>
+          <li><a href="/#cases">Case Studies</a></li>
+          <li><a href="/#careers">Careers</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <ul class="footer-links">
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/terms-of-service">Terms of Service</a></li>
+          <li><a href="/cookie-policy">Cookie Policy</a></li>
+          <li><a href="/security">Security</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 ReBi AI. All rights reserved.</div>
+      <div class="social-links">
+        <a href="#" class="social-link">in</a>
+        <a href="#" class="social-link">𝕏</a>
+        <a href="#" class="social-link">yt</a>
+        <a href="#" class="social-link">gh</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburgerBtn.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburgerBtn.setAttribute('aria-expanded', isOpen);
+  hamburgerBtn.textContent = isOpen ? '✕' : '☰';
+});
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburgerBtn.setAttribute('aria-expanded', false);
+    hamburgerBtn.textContent = '☰';
+  });
+});
+const btn = document.getElementById('themeToggle');
+const html = document.documentElement;
+btn.addEventListener('click', () => {
+  const isDark = html.dataset.theme === 'dark';
+  html.dataset.theme = isDark ? 'light' : 'dark';
+  btn.textContent = isDark ? '🌙' : '☀️';
+});
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.borderBottomColor = window.scrollY > 20 ? 'var(--border2)' : 'var(--border)';
+});
+</script>
+</body>
+</html>
