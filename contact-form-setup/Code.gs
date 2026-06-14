@@ -5,16 +5,17 @@
  * bound Google Sheet. Deploy this as a Web App (see SETUP.md).
  */
 
-// Header order written to row 1 (created automatically on first submit).
-const HEADERS = [
-  'firstName',
-  'lastName',
-  'email',
-  'company',
-  'inquiryType',
-  'message',
-  'pageUrl',
-  'submittedAt',
+// Column order: { key } matches the JSON sent by the form,
+// { label } is the human-readable header written to row 1.
+const COLUMNS = [
+  { key: 'firstName',    label: 'First Name' },
+  { key: 'lastName',     label: 'Last Name' },
+  { key: 'email',        label: 'Email' },
+  { key: 'company',      label: 'Company' },
+  { key: 'inquiryType',  label: 'Inquiry Type' },
+  { key: 'message',      label: 'Message' },
+  { key: 'pageUrl',      label: 'Page URL' },
+  { key: 'submittedAt',  label: 'Submitted At' },
 ];
 
 function doPost(e) {
@@ -27,17 +28,17 @@ function doPost(e) {
 
     // Write header row once.
     if (sheet.getLastRow() === 0) {
-      sheet.appendRow(HEADERS);
-      sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight('bold');
+      sheet.appendRow(COLUMNS.map(col => col.label));
+      sheet.getRange(1, 1, 1, COLUMNS.length).setFontWeight('bold');
       sheet.setFrozenRows(1);
     }
 
     const data = JSON.parse(e.postData.contents || '{}');
-    const row = HEADERS.map(key => {
-      if (key === 'submittedAt') {
+    const row = COLUMNS.map(col => {
+      if (col.key === 'submittedAt') {
         return data.submittedAt || new Date().toISOString();
       }
-      return data[key] || '';
+      return data[col.key] || '';
     });
     sheet.appendRow(row);
 
