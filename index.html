@@ -810,6 +810,11 @@ h2.section-title {
 }
 .form-textarea { resize: vertical; min-height: 120px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-status { margin-top: 14px; font-size: 13px; line-height: 1.5; display: none; }
+.form-status.show { display: block; }
+.form-status.success { color: #16a34a; }
+.form-status.error { color: #dc2626; }
+.form-input.invalid, .form-select.invalid, .form-textarea.invalid { border-color: #dc2626; }
 .contact-info { }
 .contact-info-item { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 28px; }
 .contact-info-icon {
@@ -1627,28 +1632,28 @@ footer {
   <p class="section-sub fade-up fade-up-delay-2">Schedule a consultation with our enterprise AI team. No sales deck — just a direct conversation about your challenges and what's possible.</p>
 
   <div class="contact-split">
-    <div class="contact-form fade-up">
+    <form class="contact-form fade-up" id="contactForm" novalidate>
       <div class="form-row">
         <div class="form-group">
-          <label class="form-label">First Name</label>
-          <input class="form-input" type="text" placeholder="Jane">
+          <label class="form-label" for="cf-firstName">First Name</label>
+          <input class="form-input" id="cf-firstName" name="firstName" type="text" placeholder="Jane" required>
         </div>
         <div class="form-group">
-          <label class="form-label">Last Name</label>
-          <input class="form-input" type="text" placeholder="Smith">
+          <label class="form-label" for="cf-lastName">Last Name</label>
+          <input class="form-input" id="cf-lastName" name="lastName" type="text" placeholder="Smith" required>
         </div>
       </div>
       <div class="form-group">
-        <label class="form-label">Work Email</label>
-        <input class="form-input" type="email" placeholder="jane@company.com">
+        <label class="form-label" for="cf-email">Work Email</label>
+        <input class="form-input" id="cf-email" name="email" type="email" placeholder="jane@company.com" required>
       </div>
       <div class="form-group">
-        <label class="form-label">Company</label>
-        <input class="form-input" type="text" placeholder="Acme Corporation">
+        <label class="form-label" for="cf-company">Company</label>
+        <input class="form-input" id="cf-company" name="company" type="text" placeholder="Acme Corporation">
       </div>
       <div class="form-group">
-        <label class="form-label">Inquiry Type</label>
-        <select class="form-select">
+        <label class="form-label" for="cf-inquiryType">Inquiry Type</label>
+        <select class="form-select" id="cf-inquiryType" name="inquiryType">
           <option>AI Transformation Consultation</option>
           <option>Platform Demo</option>
           <option>Partnership</option>
@@ -1657,11 +1662,12 @@ footer {
         </select>
       </div>
       <div class="form-group">
-        <label class="form-label">How can we help?</label>
-        <textarea class="form-textarea" placeholder="Tell us about your AI transformation goals..."></textarea>
+        <label class="form-label" for="cf-message">How can we help?</label>
+        <textarea class="form-textarea" id="cf-message" name="message" placeholder="Tell us about your AI transformation goals..." required></textarea>
       </div>
-      <button class="btn-primary" style="width: 100%; justify-content: center;" onclick="alert('Form submission coming soon — connect your backend here.')">Submit Inquiry →</button>
-    </div>
+      <button class="btn-primary" type="submit" id="cf-submit" style="width: 100%; justify-content: center;">Submit Inquiry →</button>
+      <div id="cf-status" class="form-status" role="status" aria-live="polite"></div>
+    </form>
     <div class="contact-info fade-up fade-up-delay-1">
       <div class="contact-info-item">
         <div class="contact-info-icon">📧</div>
@@ -1847,6 +1853,66 @@ window.addEventListener('scroll', () => {
   const nav = document.querySelector('nav');
   nav.style.borderBottomColor = window.scrollY > 20 ? 'var(--border2)' : 'var(--border)';
 });
+
+// Contact form → Google Sheet (Apps Script Web App)
+// Paste your deployed Apps Script Web App URL below (ends with /exec).
+const CONTACT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx_wwTr0PWuOLKO6-ws9B591dPr2y8FYHrB-3w63QEwCK6W_FpYhshWZC_iLjjobqIJvQ/exec';
+
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  const statusEl = document.getElementById('cf-status');
+  const submitBtn = document.getElementById('cf-submit');
+
+  const setStatus = (msg, type) => {
+    statusEl.textContent = msg;
+    statusEl.className = 'form-status show ' + type;
+  };
+
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Validate required fields
+    const required = contactForm.querySelectorAll('[required]');
+    let firstInvalid = null;
+    required.forEach(field => {
+      const ok = field.checkValidity() && field.value.trim() !== '';
+      field.classList.toggle('invalid', !ok);
+      if (!ok && !firstInvalid) firstInvalid = field;
+    });
+    if (firstInvalid) {
+      setStatus('Please fill in all required fields with a valid email.', 'error');
+      firstInvalid.focus();
+      return;
+    }
+
+    const data = Object.fromEntries(new FormData(contactForm).entries());
+    data.pageUrl = window.location.href;
+    data.submittedAt = new Date().toISOString();
+
+    submitBtn.disabled = true;
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending…';
+    setStatus('Sending your inquiry…', '');
+
+    try {
+      // Apps Script web apps don't return CORS headers, so use no-cors:
+      // the request still reaches the script and appends the row.
+      await fetch(CONTACT_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(data),
+      });
+      contactForm.reset();
+      setStatus('Thanks — your inquiry has been received. We’ll be in touch shortly.', 'success');
+    } catch (err) {
+      setStatus('Something went wrong. Please email us at enterprise@rebi.ai.', 'error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+  });
+}
 </script>
 </body>
 </html>
