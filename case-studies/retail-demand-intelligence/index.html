@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demand Intelligence for a Global Retailer — Case Study — ReBi AI</title>
+<meta name="description" content="How ReBi AI replaced manual forecasting with an agentic demand-intelligence system across 800+ stores — cutting inventory carrying cost 35%, doubling decision speed, and freeing $40M+ in working capital.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #09090b; --bg2: #111114; --bg3: #18181c; --surface: #1e1e24;
+  --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.12);
+  --text: #f4f4f5; --text2: #a1a1aa; --text3: #71717a;
+  --accent: #6ee7b7; --accent-dim: rgba(110,231,183,0.12);
+  --blue: #60a5fa; --blue-dim: rgba(96,165,250,0.1);
+  --font-display: 'Syne', sans-serif; --font-body: 'DM Sans', sans-serif;
+  --r: 8px; --r2: 14px; --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
+}
+[data-theme="light"] {
+  --bg: #fafafa; --bg2: #f4f4f5; --bg3: #e4e4e7; --surface: #ffffff;
+  --border: rgba(0,0,0,0.07); --border2: rgba(0,0,0,0.12);
+  --text: #09090b; --text2: #52525b; --text3: #a1a1aa;
+  --accent: #059669; --accent-dim: rgba(5,150,105,0.08);
+  --blue: #2563eb; --blue-dim: rgba(37,99,235,0.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; overflow-x: hidden; transition: background var(--transition), color var(--transition); }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; background: rgba(9,9,11,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: background var(--transition); }
+[data-theme="light"] nav { background: rgba(250,250,250,0.85); }
+.nav-logo { font-family: var(--font-display); font-size: 22px; font-weight: 800; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.nav-logo-mark { width: 32px; height: 32px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; color: #09090b; }
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+.nav-links a { color: var(--text2); text-decoration: none; font-size: 14px; padding: 6px 12px; border-radius: var(--r); transition: color var(--transition), background var(--transition); }
+.nav-links a:hover { color: var(--text); background: var(--surface); }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.btn-theme { background: var(--surface); border: 1px solid var(--border2); color: var(--text2); cursor: pointer; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: all var(--transition); }
+.btn-theme:hover { color: var(--text); border-color: var(--accent); }
+.btn-nav { background: var(--accent); color: #09090b; border: none; padding: 8px 18px; border-radius: var(--r); font-family: var(--font-body); font-size: 14px; font-weight: 500; cursor: pointer; transition: all var(--transition); text-decoration: none; display: inline-block; }
+.btn-nav:hover { opacity: 0.88; }
+.cs-page { max-width: 900px; margin: 0 auto; padding: 120px 40px 80px; }
+.cs-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text2); text-decoration: none; margin-bottom: 28px; transition: color var(--transition); }
+.cs-back:hover { color: var(--accent); }
+.cs-sector { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.cs-title { font-family: var(--font-display); font-size: clamp(30px, 5vw, 48px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; color: var(--text); margin-bottom: 20px; }
+.cs-summary { font-size: 19px; line-height: 1.6; color: var(--text2); font-weight: 300; max-width: 720px; }
+.cs-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.cs-tag { font-size: 12px; color: var(--text2); background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 5px 12px; }
+.cs-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 48px 0 8px; }
+.cs-metric { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 24px; position: relative; overflow: hidden; }
+.cs-metric::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background: linear-gradient(90deg, var(--accent), var(--blue)); }
+.cs-metric-val { font-family: var(--font-display); font-size: 38px; font-weight: 800; color: var(--accent); letter-spacing: -0.04em; line-height: 1; }
+.cs-metric-label { font-size: 13px; color: var(--text); font-weight: 600; margin-top: 10px; }
+.cs-metric-note { font-size: 12px; color: var(--text3); margin-top: 4px; line-height: 1.4; }
+.cs-divider { height: 1px; background: var(--border); margin: 40px 0; }
+.cs-body h2 { font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; margin-top: 48px; margin-bottom: 16px; }
+.cs-body h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-top: 24px; margin-bottom: 10px; }
+.cs-body p { font-size: 16px; color: var(--text2); margin-bottom: 16px; line-height: 1.75; }
+.cs-body ul { padding-left: 20px; margin-bottom: 16px; }
+.cs-body li { font-size: 16px; color: var(--text2); line-height: 1.75; margin-bottom: 8px; }
+.cs-body strong { color: var(--text); font-weight: 600; }
+.cs-statgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 28px 0; }
+.cs-stat { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r2); padding: 22px 24px; }
+.cs-stat-val { font-family: var(--font-display); font-size: 26px; font-weight: 800; color: var(--text); letter-spacing: -0.03em; }
+.cs-stat-val .delta { color: var(--accent); }
+.cs-stat-label { font-size: 13px; color: var(--text2); margin-top: 6px; line-height: 1.5; }
+.cs-quote { background: var(--accent-dim); border-left: 3px solid var(--accent); border-radius: 0 var(--r2) var(--r2) 0; padding: 28px 32px; margin: 40px 0; }
+.cs-quote p { font-size: 19px; font-style: italic; color: var(--text); font-weight: 300; line-height: 1.6; margin-bottom: 14px; }
+.cs-quote cite { font-style: normal; font-size: 14px; color: var(--text2); }
+.cs-cta { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 44px 40px; text-align: center; margin-top: 56px; position: relative; overflow: hidden; }
+.cs-cta::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background: linear-gradient(90deg, var(--accent), var(--blue)); }
+.cs-cta h2 { font-family: var(--font-display); font-size: 26px; font-weight: 800; letter-spacing: -0.03em; color: var(--text); margin-bottom: 12px; }
+.cs-cta p { font-size: 15px; color: var(--text2); margin-bottom: 24px; }
+.cs-more { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+.cs-more-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r2); padding: 22px 24px; text-decoration: none; display: block; transition: all var(--transition); }
+.cs-more-card:hover { transform: translateY(-3px); border-color: var(--border2); }
+.cs-more-sector { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); margin-bottom: 8px; }
+.cs-more-title { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+.cs-disclaimer { font-size: 12px; color: var(--text3); line-height: 1.6; margin-top: 48px; border-top: 1px solid var(--border); padding-top: 20px; }
+footer { border-top: 1px solid var(--border); background: var(--bg); padding: 60px 40px 32px; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+.footer-brand p { font-size: 14px; color: var(--text3); margin-top: 16px; max-width: 280px; line-height: 1.6; }
+.footer-col-title { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text2); margin-bottom: 16px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 14px; color: var(--text3); text-decoration: none; transition: color var(--transition); }
+.footer-links a:hover { color: var(--text); }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; }
+.footer-copy { font-size: 13px; color: var(--text3); }
+.social-links { display: flex; gap: 12px; }
+.social-link { width: 34px; height: 34px; border: 1px solid var(--border); border-radius: var(--r); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--text3); text-decoration: none; transition: all var(--transition); }
+.social-link:hover { color: var(--text); border-color: var(--border2); }
+.btn-hamburger { display: none; background: var(--surface); border: 1px solid var(--border2); color: var(--text); width: 36px; height: 36px; border-radius: var(--r); align-items: center; justify-content: center; cursor: pointer; font-size: 18px; flex-shrink: 0; transition: all var(--transition); }
+.btn-hamburger:hover { border-color: var(--accent); }
+.mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--bg2); border-bottom: 1px solid var(--border2); z-index: 99; padding: 16px 20px 24px; flex-direction: column; gap: 4px; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { color: var(--text2); text-decoration: none; font-size: 15px; padding: 12px 14px; border-radius: var(--r); transition: color var(--transition), background var(--transition); display: block; }
+.mobile-menu a:hover { color: var(--text); background: var(--surface); }
+.mobile-menu .mobile-menu-cta { background: var(--accent); color: #09090b; font-weight: 500; text-align: center; margin-top: 8px; border-radius: var(--r); }
+.mobile-menu .mobile-menu-cta:hover { opacity: 0.88; }
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .btn-hamburger { display: flex; }
+  .btn-nav-desktop { display: none; }
+  .cs-page { padding: 100px 20px 60px; }
+  .cs-metrics { grid-template-columns: 1fr 1fr; }
+  .cs-statgrid { grid-template-columns: 1fr; }
+  .cs-more { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
+@media (max-width: 600px) {
+  .cs-page { padding: 88px 16px 48px; }
+  .footer-top { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <span class="nav-logo-mark">R</span>
+    ReBi AI
+  </a>
+  <ul class="nav-links">
+    <li><a href="/#platforms">Platforms</a></li>
+    <li><a href="/#solutions">Solutions</a></li>
+    <li><a href="/#industries">Industries</a></li>
+    <li><a href="/#cases">Case Studies</a></li>
+    <li><a href="/#insights">Insights</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#careers">Careers</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="btn-theme" id="themeToggle" aria-label="Toggle theme">🌙</button>
+    <a href="/#contact" class="btn-nav btn-nav-desktop">Schedule Consultation</a>
+    <button class="btn-hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <a href="/#platforms">Platforms</a>
+  <a href="/#solutions">Solutions</a>
+  <a href="/#industries">Industries</a>
+  <a href="/#cases">Case Studies</a>
+  <a href="/#insights">Insights</a>
+  <a href="/#about">About</a>
+  <a href="/#careers">Careers</a>
+  <a href="/#contact">Contact</a>
+  <a href="/#contact" class="mobile-menu-cta">Schedule Consultation →</a>
+</div>
+
+<div class="cs-page">
+  <a href="/#cases" class="cs-back">← All case studies</a>
+  <div class="cs-sector">Retail &amp; eCommerce · Operations</div>
+  <h1 class="cs-title">Demand Intelligence for a Global Retailer</h1>
+  <p class="cs-summary">A Fortune 500 retailer replaced spreadsheet-driven forecasting with an agentic demand-intelligence system spanning 800+ stores and 120,000+ SKUs — cutting inventory carrying cost by 35%, doubling the speed of replenishment decisions, and freeing more than $40M in trapped working capital.</p>
+
+  <div class="cs-tags">
+    <span class="cs-tag">ReBi Agent Studio</span>
+    <span class="cs-tag">ReBi Data Fabric</span>
+    <span class="cs-tag">ReBi Insight Hub</span>
+    <span class="cs-tag">Agentic AI</span>
+    <span class="cs-tag">Demand Forecasting</span>
+  </div>
+
+  <div class="cs-metrics">
+    <div class="cs-metric">
+      <div class="cs-metric-val">35%</div>
+      <div class="cs-metric-label">Lower carrying cost</div>
+      <div class="cs-metric-note">Inventory holding cost reduction</div>
+    </div>
+    <div class="cs-metric">
+      <div class="cs-metric-val">2×</div>
+      <div class="cs-metric-label">Faster decisions</div>
+      <div class="cs-metric-note">7-day cycle → under 24 hours</div>
+    </div>
+    <div class="cs-metric">
+      <div class="cs-metric-val">91%</div>
+      <div class="cs-metric-label">Forecast accuracy</div>
+      <div class="cs-metric-note">Up from 68% (MAPE-based)</div>
+    </div>
+    <div class="cs-metric">
+      <div class="cs-metric-val">$40M+</div>
+      <div class="cs-metric-label">Working capital freed</div>
+      <div class="cs-metric-note">Released from excess inventory</div>
+    </div>
+  </div>
+
+  <div class="cs-body">
+    <h2>At a glance</h2>
+    <ul>
+      <li><strong>Client profile:</strong> Fortune 500 multi-format retailer — 800+ stores across 14 markets, 120,000+ active SKUs, ~$9B annual revenue.</li>
+      <li><strong>Engagement:</strong> 12-week initial deployment, then scaled chain-wide over two quarters.</li>
+      <li><strong>Platforms:</strong> ReBi Data Fabric (data unification), ReBi Agent Studio (autonomous forecasting agents), ReBi Insight Hub (planner-facing analytics).</li>
+    </ul>
+
+    <h2>The Challenge</h2>
+    <p>The retailer's demand planning ran on a patchwork of spreadsheets and a legacy statistical forecasting tool that had not kept pace with the business. Planners refreshed forecasts on a <strong>7-day cycle</strong>, by which point promotions, weather swings, and competitor moves had already shifted demand. The cost of that lag showed up across the balance sheet:</p>
+    <div class="cs-statgrid">
+      <div class="cs-stat">
+        <div class="cs-stat-val">18%</div>
+        <div class="cs-stat-label">of inventory was overstock — slow-moving or excess units tying up cash and shelf space.</div>
+      </div>
+      <div class="cs-stat">
+        <div class="cs-stat-val">9%</div>
+        <div class="cs-stat-label">average stockout rate on high-velocity items, driving lost sales and substitution.</div>
+      </div>
+      <div class="cs-stat">
+        <div class="cs-stat-val">68%</div>
+        <div class="cs-stat-label">forecast accuracy at SKU-store level — barely better than a naïve baseline.</div>
+      </div>
+      <div class="cs-stat">
+        <div class="cs-stat-val">~40 hrs</div>
+        <div class="cs-stat-label">of planner time per week spent manually reconciling data instead of making decisions.</div>
+      </div>
+    </div>
+
+    <h2>What We Built</h2>
+    <p>ReBi AI delivered an end-to-end demand-intelligence layer that turns raw signals into store-level replenishment decisions without manual intervention.</p>
+    <ul>
+      <li><strong>Unified signal layer (ReBi Data Fabric).</strong> Connected 11 source systems — POS, e-commerce, ERP, supplier lead-time feeds, loyalty data, plus external weather and local-events data — into a single governed feature store processing <strong>2.3 billion daily signals</strong>.</li>
+      <li><strong>Agentic forecasting (ReBi Agent Studio).</strong> Autonomous agents generate and continuously re-score a forecast for every one of the ~96 million store-SKU-day combinations, flagging exceptions and proposing replenishment quantities that planners approve rather than build.</li>
+      <li><strong>Planner cockpit (ReBi Insight Hub).</strong> A natural-language analytics surface lets category managers ask "why did the forecast for region 4 move?" and get an attributable answer in seconds.</li>
+    </ul>
+
+    <h2>The Results</h2>
+    <p>Within the first full quarter of chain-wide operation, the system delivered measurable, audited improvements against the client's own pre-engagement baseline:</p>
+    <div class="cs-statgrid">
+      <div class="cs-stat">
+        <div class="cs-stat-val"><span class="delta">−35%</span></div>
+        <div class="cs-stat-label">inventory carrying cost, driven by leaner safety stock and faster turns.</div>
+      </div>
+      <div class="cs-stat">
+        <div class="cs-stat-val">18% → 6.5%</div>
+        <div class="cs-stat-label">overstock rate — a <strong>64% reduction</strong> in excess inventory.</div>
+      </div>
+      <div class="cs-stat">
+        <div class="cs-stat-val"><span class="delta">−42%</span></div>
+        <div class="cs-stat-label">stockouts on high-velocity SKUs, recovering previously lost sales.</div>
+      </div>
+      <div class="cs-stat">
+        <div class="cs-stat-val">68% → 91%</div>
+        <div class="cs-stat-label">SKU-store forecast accuracy, a 23-point improvement.</div>
+      </div>
+      <div class="cs-stat">
+        <div class="cs-stat-val">7 days → &lt;24 hrs</div>
+        <div class="cs-stat-label">replenishment decision cycle — the <strong>2× decision-speed</strong> headline.</div>
+      </div>
+      <div class="cs-stat">
+        <div class="cs-stat-val">&lt;6 months</div>
+        <div class="cs-stat-label">to full payback on the engagement, with $40M+ in working capital released.</div>
+      </div>
+    </div>
+
+    <div class="cs-quote">
+      <p>We went from arguing about whose spreadsheet was right to trusting one number — and acting on it the same day. The working capital we freed up paid for the program several times over in the first year.</p>
+      <cite>— Chief Supply Chain Officer, Global Retail Enterprise <em>(client name withheld under NDA)</em></cite>
+    </div>
+
+    <h2>Why It Worked</h2>
+    <p>The difference was not a single model but the operating loop around it: governed data the business trusted, agents that produced decisions rather than dashboards, and a human-in-the-loop approval flow that earned planner adoption from week one. By the end of the rollout, planners were approving more than <strong>92% of agent-proposed orders</strong> without modification — the clearest signal that the intelligence had become part of how the business runs.</p>
+
+    <div class="cs-cta">
+      <h2>Could your operation move this fast?</h2>
+      <p>These are the benchmarks we hold ourselves to. Let's pressure-test them against your numbers.</p>
+      <a href="/#contact" class="btn-nav">Schedule a Consultation →</a>
+    </div>
+
+    <h3 style="margin-top:48px;">More case studies</h3>
+    <div class="cs-more">
+      <a href="/case-studies/healthcare-clinical-data-platform/" class="cs-more-card">
+        <div class="cs-more-sector">Healthcare · Data</div>
+        <div class="cs-more-title">Clinical Data Platform for a Health Network</div>
+      </a>
+      <a href="/case-studies/financial-services-process-automation/" class="cs-more-card">
+        <div class="cs-more-sector">Financial Services · Automation</div>
+        <div class="cs-more-title">Intelligent Process Automation for a Regional Bank</div>
+      </a>
+    </div>
+
+    <p class="cs-disclaimer">This case study describes a representative enterprise engagement. Figures reflect the outcome benchmarks ReBi AI's platforms are designed to deliver and the targets we commit to with clients; client identities are withheld under non-disclosure agreement.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo" style="font-size: 20px;">
+          <span class="nav-logo-mark" style="width: 28px; height: 28px; font-size: 12px;">R</span>
+          ReBi AI
+        </a>
+        <p>Reimagining Business Intelligence through AI. Enterprise-grade AI transformation for the organizations shaping the next decade.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Solutions</div>
+        <ul class="footer-links">
+          <li><a href="/#solutions">Agentic AI</a></li>
+          <li><a href="/#solutions">Generative AI</a></li>
+          <li><a href="/#solutions">AI Consulting</a></li>
+          <li><a href="/#solutions">Data Engineering</a></li>
+          <li><a href="/#solutions">Cloud Transformation</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Platforms</div>
+        <ul class="footer-links">
+          <li><a href="/#platforms">Agent Studio</a></li>
+          <li><a href="/#platforms">Insight Hub</a></li>
+          <li><a href="/#platforms">Data Fabric</a></li>
+          <li><a href="/#platforms">Automation Cloud</a></li>
+          <li><a href="/#platforms">AI Gateway</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#insights">Insights</a></li>
+          <li><a href="/#cases">Case Studies</a></li>
+          <li><a href="/#careers">Careers</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <ul class="footer-links">
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/terms-of-service">Terms of Service</a></li>
+          <li><a href="/cookie-policy">Cookie Policy</a></li>
+          <li><a href="/security">Security</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 ReBi AI. All rights reserved.</div>
+      <div class="social-links">
+        <a href="#" class="social-link">in</a>
+        <a href="#" class="social-link">𝕏</a>
+        <a href="#" class="social-link">yt</a>
+        <a href="#" class="social-link">gh</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburgerBtn.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburgerBtn.setAttribute('aria-expanded', isOpen);
+  hamburgerBtn.textContent = isOpen ? '✕' : '☰';
+});
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburgerBtn.setAttribute('aria-expanded', false);
+    hamburgerBtn.textContent = '☰';
+  });
+});
+const btn = document.getElementById('themeToggle');
+const html = document.documentElement;
+btn.textContent = html.dataset.theme === 'dark' ? '☀️' : '🌙';
+btn.addEventListener('click', () => {
+  const isDark = html.dataset.theme === 'dark';
+  html.dataset.theme = isDark ? 'light' : 'dark';
+  btn.textContent = isDark ? '🌙' : '☀️';
+});
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.borderBottomColor = window.scrollY > 20 ? 'var(--border2)' : 'var(--border)';
+});
+</script>
+</body>
+</html>
