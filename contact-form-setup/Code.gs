@@ -7,7 +7,6 @@
 
 // Header order written to row 1 (created automatically on first submit).
 const HEADERS = [
-  'submittedAt',
   'firstName',
   'lastName',
   'email',
@@ -15,6 +14,7 @@ const HEADERS = [
   'inquiryType',
   'message',
   'pageUrl',
+  'submittedAt',
 ];
 
 function doPost(e) {
