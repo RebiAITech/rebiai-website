@@ -609,6 +609,9 @@ h2.section-title {
   margin-bottom: 10px;
 }
 .case-desc { font-size: 14px; color: var(--text2); line-height: 1.6; }
+a.case-card { text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+.case-cta { margin-top: 20px; font-size: 13px; font-weight: 600; color: var(--accent); display: inline-flex; align-items: center; gap: 6px; transition: gap var(--transition); }
+a.case-card:hover .case-cta { gap: 10px; }
 
 /* ---- TESTIMONIALS ---- */
 .testimonials-section { background: var(--bg2); padding: 100px 40px; max-width: none; margin: 0; }
@@ -1347,7 +1350,7 @@ footer {
   <p class="section-sub fade-up fade-up-delay-2">These are the kinds of results our platforms are designed to deliver. When we engage, these are the benchmarks we hold ourselves to.</p>
 
   <div class="cases-grid fade-up">
-    <div class="case-card">
+    <a class="case-card" href="/case-studies/retail-demand-intelligence/">
       <div class="case-sector">Retail · Operations</div>
       <div class="case-metrics">
         <div>
@@ -1361,8 +1364,9 @@ footer {
       </div>
       <div class="case-title">Demand Intelligence for Global Retailer</div>
       <div class="case-desc">Replaced manual forecasting with an agentic AI system that processes real-time signals across 800+ stores, cutting overstock and accelerating replenishment decisions.</div>
-    </div>
-    <div class="case-card">
+      <div class="case-cta">View case study →</div>
+    </a>
+    <a class="case-card" href="/case-studies/healthcare-clinical-data-platform/">
       <div class="case-sector">Healthcare · Data</div>
       <div class="case-metrics">
         <div>
@@ -1376,8 +1380,9 @@ footer {
       </div>
       <div class="case-title">Clinical Data Platform for Health Network</div>
       <div class="case-desc">Built a HIPAA-compliant AI data fabric unifying EHR, claims, and lab systems — enabling real-time population health insights that previously took weeks to generate.</div>
-    </div>
-    <div class="case-card">
+      <div class="case-cta">View case study →</div>
+    </a>
+    <a class="case-card" href="/case-studies/financial-services-process-automation/">
       <div class="case-sector">Financial Services · Automation</div>
       <div class="case-metrics">
         <div>
@@ -1391,7 +1396,8 @@ footer {
       </div>
       <div class="case-title">Intelligent Process Automation for Regional Bank</div>
       <div class="case-desc">Deployed ReBi Automation Cloud across back-office operations — loan processing, KYC, and compliance reporting — eliminating 60% of manual touchpoints within 9 months.</div>
-    </div>
+      <div class="case-cta">View case study →</div>
+    </a>
   </div>
 </section>
 
