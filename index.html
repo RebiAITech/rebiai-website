@@ -830,6 +830,8 @@ a.case-card:hover .case-cta { gap: 10px; }
 }
 .contact-info-title { font-weight: 500; font-size: 14px; color: var(--text); }
 .contact-info-val { font-size: 13px; color: var(--text3); margin-top: 2px; }
+.contact-info-val a { color: inherit; text-decoration: none; transition: color 0.2s ease; }
+.contact-info-val a:hover { color: var(--text); text-decoration: underline; }
 .offices { margin-top: 40px; }
 .offices-title { font-size: 13px; font-weight: 600; color: var(--text2); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
 .office-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -1679,21 +1681,21 @@ footer {
         <div class="contact-info-icon">📧</div>
         <div>
           <div class="contact-info-title">Enterprise Inquiries</div>
-          <div class="contact-info-val">business@rebiai.tech</div>
+          <div class="contact-info-val"><a href="mailto:business@rebiai.tech">business@rebiai.tech</a></div>
         </div>
       </div>
       <div class="contact-info-item">
         <div class="contact-info-icon">🤝</div>
         <div>
           <div class="contact-info-title">Partnerships</div>
-          <div class="contact-info-val">business@rebiai.tech</div>
+          <div class="contact-info-val"><a href="mailto:business@rebiai.tech">business@rebiai.tech</a></div>
         </div>
       </div>
       <div class="contact-info-item">
         <div class="contact-info-icon">📰</div>
         <div>
           <div class="contact-info-title">Press & Media</div>
-          <div class="contact-info-val">business@rebiai.tech</div>
+          <div class="contact-info-val"><a href="mailto:business@rebiai.tech">business@rebiai.tech</a></div>
         </div>
       </div>
       <div class="offices">
