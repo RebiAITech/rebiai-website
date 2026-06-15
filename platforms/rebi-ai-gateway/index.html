@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReBi AI Gateway — Enterprise AI Platform — ReBi AI</title>
+<meta name="description" content="ReBi AI Gateway is the proprietary secure AI access platform of RebiAI Tech — LLM routing, cost optimization, PII redaction, and enterprise compliance. Patented and trademarked intellectual property of RebiAI Tech.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #09090b; --bg2: #111114; --bg3: #18181c; --surface: #1e1e24;
+  --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.12);
+  --text: #f4f4f5; --text2: #a1a1aa; --text3: #71717a;
+  --accent: #6ee7b7; --accent-dim: rgba(110,231,183,0.12);
+  --blue: #60a5fa; --blue-dim: rgba(96,165,250,0.1);
+  --purple: #a78bfa; --purple-dim: rgba(167,139,250,0.1);
+  --amber: #fbbf24;
+  --font-display: 'Syne', sans-serif; --font-body: 'DM Sans', sans-serif;
+  --r: 8px; --r2: 14px; --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
+}
+[data-theme="light"] {
+  --bg: #fafafa; --bg2: #f4f4f5; --bg3: #e4e4e7; --surface: #ffffff;
+  --border: rgba(0,0,0,0.07); --border2: rgba(0,0,0,0.12);
+  --text: #09090b; --text2: #52525b; --text3: #a1a1aa;
+  --accent: #059669; --accent-dim: rgba(5,150,105,0.08);
+  --blue: #2563eb; --blue-dim: rgba(37,99,235,0.08);
+  --purple: #7c3aed; --purple-dim: rgba(124,58,237,0.08);
+  --amber: #d97706;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; overflow-x: hidden; transition: background var(--transition), color var(--transition); }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; background: rgba(9,9,11,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: background var(--transition); }
+[data-theme="light"] nav { background: rgba(250,250,250,0.85); }
+.nav-logo { font-family: var(--font-display); font-size: 22px; font-weight: 800; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.nav-logo-mark { width: 32px; height: 32px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; color: #09090b; }
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+.nav-links a { color: var(--text2); text-decoration: none; font-size: 14px; padding: 6px 12px; border-radius: var(--r); transition: color var(--transition), background var(--transition); }
+.nav-links a:hover { color: var(--text); background: var(--surface); }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.btn-theme { background: var(--surface); border: 1px solid var(--border2); color: var(--text2); cursor: pointer; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: all var(--transition); }
+.btn-theme:hover { color: var(--text); border-color: var(--accent); }
+.btn-nav { background: var(--accent); color: #09090b; border: none; padding: 8px 18px; border-radius: var(--r); font-family: var(--font-body); font-size: 14px; font-weight: 500; cursor: pointer; transition: all var(--transition); text-decoration: none; display: inline-block; }
+.btn-nav:hover { opacity: 0.88; }
+.cs-page { max-width: 900px; margin: 0 auto; padding: 120px 40px 80px; }
+.cs-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text2); text-decoration: none; margin-bottom: 28px; transition: color var(--transition); }
+.cs-back:hover { color: var(--accent); }
+.platform-icon-lg { width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 30px; margin-bottom: 24px; }
+.platform-icon-lg.green { background: var(--accent-dim); }
+.platform-icon-lg.blue { background: var(--blue-dim); }
+.platform-icon-lg.purple { background: var(--purple-dim); }
+.ip-badge { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: var(--accent-dim); border: 1px solid var(--border); border-radius: 999px; padding: 6px 13px; margin-bottom: 18px; }
+.cs-sector { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.cs-title { font-family: var(--font-display); font-size: clamp(30px, 5vw, 48px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; color: var(--text); margin-bottom: 20px; }
+.cs-summary { font-size: 19px; line-height: 1.6; color: var(--text2); font-weight: 300; max-width: 720px; }
+.cs-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.cs-tag { font-size: 12px; color: var(--text2); background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 5px 12px; }
+.cs-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 48px 0 8px; }
+.cs-metric { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 24px; position: relative; overflow: hidden; }
+.cs-metric::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background: linear-gradient(90deg, var(--accent), var(--blue)); }
+.cs-metric-val { font-family: var(--font-display); font-size: 30px; font-weight: 800; color: var(--accent); letter-spacing: -0.03em; line-height: 1.1; }
+.cs-metric-label { font-size: 13px; color: var(--text); font-weight: 600; margin-top: 10px; }
+.cs-metric-note { font-size: 12px; color: var(--text3); margin-top: 4px; line-height: 1.4; }
+.cs-body h2 { font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; margin-top: 48px; margin-bottom: 16px; }
+.cs-body h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-top: 24px; margin-bottom: 10px; }
+.cs-body p { font-size: 16px; color: var(--text2); margin-bottom: 16px; line-height: 1.75; }
+.cs-body ul { padding-left: 20px; margin-bottom: 16px; }
+.cs-body li { font-size: 16px; color: var(--text2); line-height: 1.75; margin-bottom: 8px; }
+.cs-body strong { color: var(--text); font-weight: 600; }
+.cap-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 28px 0; }
+.cap-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r2); padding: 22px 24px; }
+.cap-card .cap-icon { font-size: 22px; display: block; margin-bottom: 12px; }
+.cap-card h3 { margin-top: 0; margin-bottom: 8px; font-size: 15px; }
+.cap-card p { font-size: 14px; margin-bottom: 0; line-height: 1.6; }
+.ip-notice { background: var(--bg2); border: 1px solid var(--border2); border-radius: var(--r2); padding: 30px 32px; margin: 40px 0; position: relative; overflow: hidden; }
+.ip-notice::before { content:''; position:absolute; top:0; left:0; bottom:0; width:3px; background: linear-gradient(180deg, var(--accent), var(--blue)); }
+.ip-notice h2 { margin-top: 0 !important; display: flex; align-items: center; gap: 10px; font-size: 22px; }
+.ip-notice p { font-size: 14px; }
+.ip-notice ul { margin-top: 8px; }
+.ip-notice li { font-size: 14px; }
+.ip-foot { font-size: 12px; color: var(--text3); margin-top: 14px; line-height: 1.6; }
+.cs-quote { background: var(--accent-dim); border-left: 3px solid var(--accent); border-radius: 0 var(--r2) var(--r2) 0; padding: 28px 32px; margin: 40px 0; }
+.cs-quote p { font-size: 19px; font-style: italic; color: var(--text); font-weight: 300; line-height: 1.6; margin-bottom: 14px; }
+.cs-quote cite { font-style: normal; font-size: 14px; color: var(--text2); }
+.cs-cta { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 44px 40px; text-align: center; margin-top: 56px; position: relative; overflow: hidden; }
+.cs-cta::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background: linear-gradient(90deg, var(--accent), var(--blue)); }
+.cs-cta h2 { font-family: var(--font-display); font-size: 26px; font-weight: 800; letter-spacing: -0.03em; color: var(--text); margin-bottom: 12px; margin-top: 0; }
+.cs-cta p { font-size: 15px; color: var(--text2); margin-bottom: 24px; }
+.cs-more { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+.cs-more-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r2); padding: 22px 24px; text-decoration: none; display: block; transition: all var(--transition); }
+.cs-more-card:hover { transform: translateY(-3px); border-color: var(--border2); }
+.cs-more-sector { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); margin-bottom: 8px; }
+.cs-more-title { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+.cs-disclaimer { font-size: 12px; color: var(--text3); line-height: 1.6; margin-top: 48px; border-top: 1px solid var(--border); padding-top: 20px; }
+footer { border-top: 1px solid var(--border); background: var(--bg); padding: 60px 40px 32px; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+.footer-brand p { font-size: 14px; color: var(--text3); margin-top: 16px; max-width: 280px; line-height: 1.6; }
+.footer-col-title { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text2); margin-bottom: 16px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 14px; color: var(--text3); text-decoration: none; transition: color var(--transition); }
+.footer-links a:hover { color: var(--text); }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; }
+.footer-copy { font-size: 13px; color: var(--text3); }
+.social-links { display: flex; gap: 12px; }
+.social-link { width: 34px; height: 34px; border: 1px solid var(--border); border-radius: var(--r); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--text3); text-decoration: none; transition: all var(--transition); }
+.social-link:hover { color: var(--text); border-color: var(--border2); }
+.btn-hamburger { display: none; background: var(--surface); border: 1px solid var(--border2); color: var(--text); width: 36px; height: 36px; border-radius: var(--r); align-items: center; justify-content: center; cursor: pointer; font-size: 18px; flex-shrink: 0; transition: all var(--transition); }
+.btn-hamburger:hover { border-color: var(--accent); }
+.mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--bg2); border-bottom: 1px solid var(--border2); z-index: 99; padding: 16px 20px 24px; flex-direction: column; gap: 4px; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { color: var(--text2); text-decoration: none; font-size: 15px; padding: 12px 14px; border-radius: var(--r); transition: color var(--transition), background var(--transition); display: block; }
+.mobile-menu a:hover { color: var(--text); background: var(--surface); }
+.mobile-menu .mobile-menu-cta { background: var(--accent); color: #09090b; font-weight: 500; text-align: center; margin-top: 8px; border-radius: var(--r); }
+.mobile-menu .mobile-menu-cta:hover { opacity: 0.88; }
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .btn-hamburger { display: flex; }
+  .btn-nav-desktop { display: none; }
+  .cs-page { padding: 100px 20px 60px; }
+  .cs-metrics { grid-template-columns: 1fr 1fr; }
+  .cap-grid { grid-template-columns: 1fr; }
+  .cs-more { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
+@media (max-width: 600px) {
+  .cs-page { padding: 88px 16px 48px; }
+  .footer-top { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <span class="nav-logo-mark">R</span>
+    ReBi AI
+  </a>
+  <ul class="nav-links">
+    <li><a href="/#platforms">Platforms</a></li>
+    <li><a href="/#solutions">Solutions</a></li>
+    <li><a href="/#industries">Industries</a></li>
+    <li><a href="/#cases">Case Studies</a></li>
+    <li><a href="/#insights">Insights</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#careers">Careers</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="btn-theme" id="themeToggle" aria-label="Toggle theme">🌙</button>
+    <a href="/#contact" class="btn-nav btn-nav-desktop">Schedule Consultation</a>
+    <button class="btn-hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <a href="/#platforms">Platforms</a>
+  <a href="/#solutions">Solutions</a>
+  <a href="/#industries">Industries</a>
+  <a href="/#cases">Case Studies</a>
+  <a href="/#insights">Insights</a>
+  <a href="/#about">About</a>
+  <a href="/#careers">Careers</a>
+  <a href="/#contact">Contact</a>
+  <a href="/#contact" class="mobile-menu-cta">Schedule Consultation →</a>
+</div>
+
+<div class="cs-page">
+  <a href="/#platforms" class="cs-back">← All platforms</a>
+  <div class="platform-icon-lg blue">🛡️</div>
+  <span class="ip-badge">◆ Proprietary IP of RebiAI Tech</span>
+  <div class="cs-sector">Enterprise AI Platform · AI Security &amp; Governance</div>
+  <h1 class="cs-title">ReBi AI Gateway</h1>
+  <p class="cs-summary">Secure, governed access to frontier AI models — LLM routing, cost optimization, PII redaction, and enterprise compliance built in. A proprietary platform built and owned exclusively by RebiAI Tech.</p>
+
+  <div class="cs-tags">
+    <span class="cs-tag">LLM Router</span>
+    <span class="cs-tag">PII Guard</span>
+    <span class="cs-tag">SOC 2</span>
+    <span class="cs-tag">Rate Limiting</span>
+  </div>
+
+  <div class="cs-metrics">
+    <div class="cs-metric">
+      <div class="cs-metric-val">Smart</div>
+      <div class="cs-metric-label">LLM routing</div>
+      <div class="cs-metric-note">Right model for every request</div>
+    </div>
+    <div class="cs-metric">
+      <div class="cs-metric-val">PII</div>
+      <div class="cs-metric-label">Redaction</div>
+      <div class="cs-metric-note">Sensitive data guarded before it leaves</div>
+    </div>
+    <div class="cs-metric">
+      <div class="cs-metric-val">SOC 2</div>
+      <div class="cs-metric-label">Compliance</div>
+      <div class="cs-metric-note">Enterprise-grade controls built in</div>
+    </div>
+    <div class="cs-metric">
+      <div class="cs-metric-val">Optimized</div>
+      <div class="cs-metric-label">AI spend</div>
+      <div class="cs-metric-note">Cost controls &amp; rate limiting</div>
+    </div>
+  </div>
+
+  <div class="cs-body">
+    <h2>Overview</h2>
+    <p>ReBi AI Gateway is RebiAI Tech's proprietary <strong>control plane for enterprise AI access</strong>. It sits between your applications and the world's frontier and private models, giving every team secure, governed, cost-controlled access through a single managed entry point — so the business can adopt AI fast without losing oversight.</p>
+    <p>Routing, redaction, compliance, and spend controls are built in rather than reassembled per project. Every component of the platform is the proprietary technology of RebiAI Tech, made available exclusively under enterprise license.</p>
+
+    <h2>Key Capabilities</h2>
+    <div class="cap-grid">
+      <div class="cap-card">
+        <span class="cap-icon">🧭</span>
+        <h3>Intelligent LLM Router</h3>
+        <p>Direct each request to the best-fit model across providers based on capability, latency, and cost — with automatic failover.</p>
+      </div>
+      <div class="cap-card">
+        <span class="cap-icon">🔒</span>
+        <h3>PII Guard &amp; Redaction</h3>
+        <p>Detect and redact sensitive data before prompts leave your boundary, keeping regulated information out of third-party models.</p>
+      </div>
+      <div class="cap-card">
+        <span class="cap-icon">📋</span>
+        <h3>Enterprise Compliance</h3>
+        <p>SOC 2-aligned controls, full request logging, and policy enforcement give security and audit teams complete visibility.</p>
+      </div>
+      <div class="cap-card">
+        <span class="cap-icon">📉</span>
+        <h3>Cost &amp; Rate Controls</h3>
+        <p>Per-team budgets, rate limiting, caching, and usage analytics keep AI spend predictable and under governance.</p>
+      </div>
+    </div>
+
+    <h2>How It Works</h2>
+    <ul>
+      <li><strong>Route through one gateway.</strong> Applications call a single managed endpoint instead of many provider APIs.</li>
+      <li><strong>Protect every request.</strong> PII is detected and redacted, and policies are enforced before anything reaches a model.</li>
+      <li><strong>Optimize automatically.</strong> The router selects the right model and applies caching, budgets, and rate limits.</li>
+      <li><strong>Prove compliance.</strong> Every request is logged with full audit detail for security and regulatory review.</li>
+    </ul>
+
+    <h2>Built for the Enterprise</h2>
+    <p>AI Gateway is the secure front door to AI for the rest of the RebiAI platform family — <strong>ReBi Agent Studio</strong> agents, <strong>ReBi Insight Hub</strong> analytics, and <strong>ReBi Automation Cloud</strong> processes all reach models through it, inheriting consistent security, redaction, and compliance controls.</p>
+
+    <div class="ip-notice">
+      <h2>⚖️ Intellectual Property &amp; Licensing</h2>
+      <p>ReBi AI Gateway is proprietary software and the <strong>exclusive intellectual property of RebiAI Tech</strong> ("RebiAI", "the Company"). The platform — including, without limitation, its source code, system architecture, model-routing and redaction engines, machine-learning models and methods, algorithms, policy definitions, data schemas, APIs, user interfaces, visual design, and accompanying documentation — constitutes the confidential information and protected trade secrets of RebiAI Tech.</p>
+      <p>All right, title, and interest in and to the platform are reserved by RebiAI Tech under applicable <strong>copyright, patent, trade secret, and trademark laws</strong> and international treaties. Access is granted solely under a written enterprise license or subscription agreement; no ownership or implied license is transferred. Except as expressly permitted in such agreement, you may not:</p>
+      <ul>
+        <li>copy, reproduce, modify, translate, or create derivative works of the platform;</li>
+        <li>reverse-engineer, decompile, disassemble, or otherwise attempt to derive its source code, models, or trade secrets;</li>
+        <li>sublicense, rent, resell, distribute, or provide the platform to any third party; or</li>
+        <li>use the platform, in whole or in part, to build or train a competing product or service.</li>
+      </ul>
+      <p class="ip-foot">"RebiAI", "ReBi", "ReBi AI Gateway", the "R" logo, and the ReBi platform family names are trademarks of RebiAI Tech. © 2026 RebiAI Tech. All rights reserved. Unauthorized use is strictly prohibited and may result in civil and criminal liability.</p>
+    </div>
+
+    <div class="cs-cta">
+      <h2>See ReBi AI Gateway in action</h2>
+      <p>Book a guided walkthrough and we'll show governed model access mapped to your stack.</p>
+      <a href="/#contact" class="btn-nav">Schedule a Consultation →</a>
+    </div>
+
+    <h3 style="margin-top:48px;">Explore more platforms</h3>
+    <div class="cs-more">
+      <a href="/platforms/rebi-agent-studio/" class="cs-more-card">
+        <div class="cs-more-sector">Enterprise AI Platform</div>
+        <div class="cs-more-title">ReBi Agent Studio</div>
+      </a>
+      <a href="/platforms/rebi-automation-cloud/" class="cs-more-card">
+        <div class="cs-more-sector">Enterprise AI Platform</div>
+        <div class="cs-more-title">ReBi Automation Cloud</div>
+      </a>
+    </div>
+
+    <p class="cs-disclaimer">This page describes the capabilities of a proprietary RebiAI Tech platform offered under commercial enterprise license. Feature availability may vary by edition and contract. All platform names and marks referenced are the intellectual property of RebiAI Tech.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo" style="font-size: 20px;">
+          <span class="nav-logo-mark" style="width: 28px; height: 28px; font-size: 12px;">R</span>
+          ReBi AI
+        </a>
+        <p>Reimagining Business Intelligence through AI. Enterprise-grade AI transformation for the organizations shaping the next decade.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Solutions</div>
+        <ul class="footer-links">
+          <li><a href="/#solutions">Agentic AI</a></li>
+          <li><a href="/#solutions">Generative AI</a></li>
+          <li><a href="/#solutions">AI Consulting</a></li>
+          <li><a href="/#solutions">Data Engineering</a></li>
+          <li><a href="/#solutions">Cloud Transformation</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Platforms</div>
+        <ul class="footer-links">
+          <li><a href="/platforms/rebi-agent-studio/">Agent Studio</a></li>
+          <li><a href="/platforms/rebi-insight-hub/">Insight Hub</a></li>
+          <li><a href="/platforms/rebi-data-fabric/">Data Fabric</a></li>
+          <li><a href="/platforms/rebi-automation-cloud/">Automation Cloud</a></li>
+          <li><a href="/platforms/rebi-ai-gateway/">AI Gateway</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#insights">Insights</a></li>
+          <li><a href="/#cases">Case Studies</a></li>
+          <li><a href="/#careers">Careers</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <ul class="footer-links">
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/terms-of-service">Terms of Service</a></li>
+          <li><a href="/cookie-policy">Cookie Policy</a></li>
+          <li><a href="/security">Security</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 ReBi AI. All rights reserved.</div>
+      <div class="social-links">
+        <a href="#" class="social-link">in</a>
+        <a href="#" class="social-link">𝕏</a>
+        <a href="#" class="social-link">yt</a>
+        <a href="#" class="social-link">gh</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburgerBtn.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburgerBtn.setAttribute('aria-expanded', isOpen);
+  hamburgerBtn.textContent = isOpen ? '✕' : '☰';
+});
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburgerBtn.setAttribute('aria-expanded', false);
+    hamburgerBtn.textContent = '☰';
+  });
+});
+const btn = document.getElementById('themeToggle');
+const html = document.documentElement;
+btn.textContent = html.dataset.theme === 'dark' ? '☀️' : '🌙';
+btn.addEventListener('click', () => {
+  const isDark = html.dataset.theme === 'dark';
+  html.dataset.theme = isDark ? 'light' : 'dark';
+  btn.textContent = isDark ? '🌙' : '☀️';
+});
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.borderBottomColor = window.scrollY > 20 ? 'var(--border2)' : 'var(--border)';
+});
+</script>
+</body>
+</html>
