@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ReBi Data Fabric — Enterprise AI Platform — ReBi AI</title>
+<link rel="icon" type="image/png" href="/assets/favicon.png?v=2">
+<link rel="apple-touch-icon" href="/assets/favicon.png?v=2">
 <meta name="description" content="ReBi Data Fabric is the proprietary AI-ready data unification platform of RebiAI Tech — governed data across on-premise, cloud, and hybrid environments. Patented and trademarked intellectual property of RebiAI Tech.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,6 +40,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; background: rgba(9,9,11,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: background var(--transition); }
 [data-theme="light"] nav { background: rgba(250,250,250,0.85); }
 .nav-logo { font-family: var(--font-display); font-size: 22px; font-weight: 800; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.nav-logo-img { height: 34px; width: auto; display: block; }
 .nav-logo-mark { width: 32px; height: 32px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; color: #09090b; }
 .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
 .nav-links a { color: var(--text2); text-decoration: none; font-size: 14px; padding: 6px 12px; border-radius: var(--r); transition: color var(--transition), background var(--transition); }
@@ -140,8 +143,7 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 60
 
 <nav>
   <a href="/" class="nav-logo">
-    <span class="nav-logo-mark">R</span>
-    ReBi AI
+    <img src="/assets/logo.png" alt="ReBi AI" class="nav-logo-img">
   </a>
   <ul class="nav-links">
     <li><a href="/#platforms">Platforms</a></li>
@@ -290,8 +292,7 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 60
     <div class="footer-top">
       <div class="footer-brand">
         <a href="/" class="nav-logo" style="font-size: 20px;">
-          <span class="nav-logo-mark" style="width: 28px; height: 28px; font-size: 12px;">R</span>
-          ReBi AI
+          <img src="/assets/logo.png?v=2" alt="ReBi AI" class="nav-logo-img">
         </a>
         <p>Reimagining Business Intelligence through AI. Enterprise-grade AI transformation for the organizations shaping the next decade.</p>
       </div>
