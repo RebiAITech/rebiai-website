@@ -6,11 +6,16 @@
 <title>Clinical Data Platform for a Health Network — Case Study — ReBi AI</title>
 <link rel="icon" type="image/png" href="/assets/favicon.png?v=2">
 <link rel="apple-touch-icon" href="/assets/favicon.png?v=2">
-<meta name="description" content="How ReBi AI built a HIPAA-compliant AI data fabric unifying 50M+ records across EHR, claims, and lab systems — lifting analyst productivity 40% and turning weeks-long population health reporting into near real-time insight.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://www.rebiai.tech/case-studies/healthcare-clinical-data-platform/">
+<meta name="description" content="How ReBi AI built a governed, PHI-protected AI data fabric unifying 50M+ records across EHR, claims, and lab systems — lifting analyst productivity 40% and turning weeks-long population health reporting into near real-time insight.">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/dmsans-variable.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/syne-variable.woff2">
 <style>
+/* ---- SELF-HOSTED FONTS (latin subset, variable) ---- */
+@font-face{font-family:'Syne';font-style:normal;font-weight:400 800;font-display:swap;src:url('/assets/fonts/syne-variable.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:300 500;font-display:swap;src:url('/assets/fonts/dmsans-variable.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'DM Sans';font-style:italic;font-weight:300;font-display:swap;src:url('/assets/fonts/dmsans-italic.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+
 :root {
   --bg: #09090b; --bg2: #111114; --bg3: #18181c; --surface: #1e1e24;
   --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.12);
@@ -163,13 +168,13 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 60
   <a href="/#cases" class="cs-back">← All case studies</a>
   <div class="cs-sector">Healthcare · Data</div>
   <h1 class="cs-title">Clinical Data Platform for a Health Network</h1>
-  <p class="cs-summary">A regional health network of 12 hospitals and 200+ clinics unified 50M+ records across EHR, claims, and lab systems on a HIPAA-compliant AI data fabric — lifting analyst productivity 40% and turning population-health reporting that once took three weeks into near real-time insight.</p>
+  <p class="cs-summary">A regional health network of 12 hospitals and 200+ clinics unified 50M+ records across EHR, claims, and lab systems on a governed, PHI-protected AI data fabric — lifting analyst productivity 40% and turning population-health reporting that once took three weeks into near real-time insight.</p>
 
   <div class="cs-tags">
     <span class="cs-tag">ReBi Data Fabric</span>
     <span class="cs-tag">ReBi AI Gateway</span>
     <span class="cs-tag">ReBi Insight Hub</span>
-    <span class="cs-tag">HIPAA · HL7 · FHIR</span>
+    <span class="cs-tag">PHI Protection · HL7 · FHIR</span>
     <span class="cs-tag">Population Health</span>
   </div>
 
@@ -201,7 +206,7 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 60
     <ul>
       <li><strong>Client profile:</strong> Regional non-profit health network — 12 hospitals, 200+ outpatient clinics, ~4.5M patient records, 18,000 staff.</li>
       <li><strong>Engagement:</strong> 16-week build to first production insights, with phased onboarding of source systems.</li>
-      <li><strong>Platforms:</strong> ReBi Data Fabric (governed, HIPAA-compliant unification), ReBi AI Gateway (PII redaction &amp; model governance), ReBi Insight Hub (analyst &amp; clinician analytics).</li>
+      <li><strong>Platforms:</strong> ReBi Data Fabric (governed, PHI-protected unification), ReBi AI Gateway (PII redaction &amp; model governance), ReBi Insight Hub (analyst &amp; clinician analytics).</li>
     </ul>
 
     <h2>The Challenge</h2>
@@ -228,7 +233,7 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 60
     <h2>What We Built</h2>
     <p>ReBi AI delivered a governed clinical data fabric with AI access controls designed for a regulated environment from day one.</p>
     <ul>
-      <li><strong>HIPAA-compliant data fabric (ReBi Data Fabric).</strong> Ingested and normalized <strong>50M+ records</strong> to HL7 and FHIR standards, with deterministic + probabilistic patient matching that collapsed duplicate records and produced a single longitudinal record per patient.</li>
+      <li><strong>Governed, PHI-protected data fabric (ReBi Data Fabric).</strong> Ingested and normalized <strong>50M+ records</strong> to HL7 and FHIR standards, with deterministic + probabilistic patient matching that collapsed duplicate records and produced a single longitudinal record per patient.</li>
       <li><strong>Governed AI access (ReBi AI Gateway).</strong> Automated PII/PHI detection and redaction before any data reached an LLM, with full audit logging, role-based access, and a documented chain of custody for every query.</li>
       <li><strong>Self-service analytics (ReBi Insight Hub).</strong> Care managers and financial analysts query the unified layer in natural language — cohort definitions, readmission risk, and care-gap reports that previously required a data engineer.</li>
     </ul>
@@ -258,12 +263,12 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 60
       </div>
       <div class="cs-stat">
         <div class="cs-stat-val">Zero</div>
-        <div class="cs-stat-label">PHI exposure incidents; 100% pass on internal HIPAA access audits.</div>
+        <div class="cs-stat-label">PHI exposure incidents; 100% pass on internal PHI access audits.</div>
       </div>
     </div>
 
     <div class="cs-quote">
-      <p>What impressed us was the depth of healthcare domain knowledge — they understood HIPAA, HL7, and FHIR before we had to explain them. We finally have one version of the patient, and we can ask questions of it in real time.</p>
+      <p>What impressed us was the depth of healthcare domain knowledge — they understood our clinical data standards like HL7 and FHIR before we had to explain them. We finally have one version of the patient, and we can ask questions of it in real time.</p>
       <cite>— Chief Data Officer, Regional Health Network <em>(client name withheld under NDA)</em></cite>
     </div>
 

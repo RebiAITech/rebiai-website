@@ -6,11 +6,16 @@
 <title>ReBi AI Gateway — Enterprise AI Platform — ReBi AI</title>
 <link rel="icon" type="image/png" href="/assets/favicon.png?v=2">
 <link rel="apple-touch-icon" href="/assets/favicon.png?v=2">
+<link rel="canonical" href="https://www.rebiai.tech/platforms/rebi-ai-gateway/">
 <meta name="description" content="ReBi AI Gateway is the proprietary secure AI access platform of RebiAI Tech — LLM routing, cost optimization, PII redaction, and enterprise compliance. Patented and trademarked intellectual property of RebiAI Tech.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/dmsans-variable.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/syne-variable.woff2">
 <style>
+/* ---- SELF-HOSTED FONTS (latin subset, variable) ---- */
+@font-face{font-family:'Syne';font-style:normal;font-weight:400 800;font-display:swap;src:url('/assets/fonts/syne-variable.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:300 500;font-display:swap;src:url('/assets/fonts/dmsans-variable.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'DM Sans';font-style:italic;font-weight:300;font-display:swap;src:url('/assets/fonts/dmsans-italic.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+
 :root {
   --bg: #09090b; --bg2: #111114; --bg3: #18181c; --surface: #1e1e24;
   --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.12);
@@ -185,7 +190,7 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 60
   <div class="cs-tags">
     <span class="cs-tag">LLM Router</span>
     <span class="cs-tag">PII Guard</span>
-    <span class="cs-tag">SOC 2</span>
+    <span class="cs-tag">Audit Logs</span>
     <span class="cs-tag">Rate Limiting</span>
   </div>
 
@@ -201,8 +206,8 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 60
       <div class="cs-metric-note">Sensitive data guarded before it leaves</div>
     </div>
     <div class="cs-metric">
-      <div class="cs-metric-val">SOC 2</div>
-      <div class="cs-metric-label">Compliance</div>
+      <div class="cs-metric-val">Governed</div>
+      <div class="cs-metric-label">Access</div>
       <div class="cs-metric-note">Enterprise-grade controls built in</div>
     </div>
     <div class="cs-metric">
@@ -232,7 +237,7 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 60
       <div class="cap-card">
         <span class="cap-icon">📋</span>
         <h3>Enterprise Compliance</h3>
-        <p>SOC 2-aligned controls, full request logging, and policy enforcement give security and audit teams complete visibility.</p>
+        <p>Granular access controls, full request logging, and policy enforcement give security and audit teams complete visibility.</p>
       </div>
       <div class="cap-card">
         <span class="cap-icon">📉</span>
