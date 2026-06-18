@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.rebiai.tech/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Platforms -->
+  <url><loc>https://www.rebiai.tech/platforms/rebi-agent-studio/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rebiai.tech/platforms/rebi-insight-hub/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rebiai.tech/platforms/rebi-data-fabric/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rebiai.tech/platforms/rebi-automation-cloud/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rebiai.tech/platforms/rebi-ai-gateway/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Case studies -->
+  <url><loc>https://www.rebiai.tech/case-studies/financial-services-process-automation/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rebiai.tech/case-studies/healthcare-clinical-data-platform/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rebiai.tech/case-studies/retail-demand-intelligence/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Insights -->
+  <url><loc>https://www.rebiai.tech/insights/enterprise-ai-agents-most-companies-arent-ready/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.rebiai.tech/insights/enterprise-ai-governance-framework/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.rebiai.tech/insights/data-as-competitive-advantage/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Legal -->
+  <url><loc>https://www.rebiai.tech/security/</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://www.rebiai.tech/privacy-policy/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.rebiai.tech/terms-of-service/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.rebiai.tech/cookie-policy/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+</urlset>
